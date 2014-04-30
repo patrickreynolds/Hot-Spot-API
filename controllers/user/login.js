@@ -1,5 +1,4 @@
 var async = require('async');
-var mongoose = require('mongoose');
 var User = require('../../models/user.js');
 
 module.exports = (function() {
@@ -8,7 +7,7 @@ module.exports = (function() {
 
     return async.waterfall([
       function(callback) {
-        if (req.body.email || req.body.password) {
+        if (typeof req.body.email !== 'undefined' || typeof req.body.password !== 'undefined') {
           if (!req.body.email) {
             return res.json(400, {
               field: 'email',
@@ -30,7 +29,7 @@ module.exports = (function() {
               return callback(null, isMatch ? user : null);
             });
           });
-        } else if (req.body.userId || req.body.sessionToken) {
+        } else if (typeof req.body.userId !== 'undefined' || typeof req.body.sessionToken !== 'undefined') {
           if (!req.body.userId) {
             return res.json(400, { field: 'userId' });
           } else if (!req.body.sessionToken) {
@@ -39,7 +38,7 @@ module.exports = (function() {
           return User.findOne({ id: req.body.userId, sessionToken: req.body.sessionToken }, callback);
         } else {
           return res.json(400, {
-            field: 'email/password or userId/sessionToken'
+            field: 'email/password or userId/sessionToken',
           });
         }
       }, function(_user, callback) {
