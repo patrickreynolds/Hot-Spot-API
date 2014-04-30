@@ -30,4 +30,8 @@ var loadUserFromSessionToken = function(options) {
 
 module.exports = function(app) {
   app.get('/', controllers.index);
+
+  app.post('/user/signup', controllers.user.signup);
+
+  app.post('/user/login', controllers.user.login);
 };
