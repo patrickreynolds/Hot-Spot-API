@@ -7,6 +7,7 @@ mongoose.connect(config.database.mongo_uri);
 var app = express();
 
 app.set('port', config.server.port);
+app.use(require('morgan')('dev'));
 app.use(require('body-parser')());
 
 if ('development' == app.get('env')) {
