@@ -35,7 +35,7 @@ module.exports = (function() {
           } else if (!req.body.sessionToken) {
             return res.json(400, { field: 'sessionToken' });
           }
-          return User.findOne({ id: req.body.userId, sessionToken: req.body.sessionToken }, callback);
+          return User.findOne({ _id: req.body.userId, sessionToken: req.body.sessionToken }, callback);
         } else {
           return res.json(400, {
             field: 'email/password or userId/sessionToken',
