@@ -53,7 +53,7 @@ module.exports = (function() {
         currentUser.sessionToken = User.randomToken();
         return currentUser.save(callback);
       }, function(currentUser, numberAffected, callback) {
-        if (!currentUser.instagram || !currentUser.instagram.sessionToken || currentUser.instagram.sessionToken === '') {
+        if (!currentUser.instagramSessionToken || currentUser.instagramSessionToken === '') {
           return res.json(403, {
             userId: currentUser._id,
             sessionToken: currentUser.sessionToken

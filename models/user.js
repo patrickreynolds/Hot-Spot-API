@@ -18,18 +18,8 @@ var userSchema = new Schema({
     unique: true,
     sparse: true
   },
-  instagram: {
-    userId: {
-      type: String,
-      unique: true,
-      sparse: true
-    },
-    sessionToken: {
-      type: String
-    },
-    refreshToken: {
-      type: String
-    }
+  instagramSessionToken: {
+    type: String
   },
   hotspots: [{
     name: String,

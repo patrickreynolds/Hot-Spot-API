@@ -34,4 +34,8 @@ module.exports = function(app) {
   app.post('/user/signup', controllers.user.signup);
 
   app.post('/user/login', controllers.user.login);
+
+  app.post('/user/associate',
+    loadUserFromSessionToken(),
+    controllers.user.associate);
 };
