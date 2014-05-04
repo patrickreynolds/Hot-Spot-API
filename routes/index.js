@@ -7,10 +7,10 @@ var loadUserFromSessionToken = function(options) {
     'fields': null
   });
   return function(req, res, next) {
-    if (!req.query.sessionToken) {
+    if (!req.param('sessionToken')) {
       return res.json(400, { field: 'sessionToken' });
     }
-    var conditions = { 'sessionToken': req.query.sessionToken };
+    var conditions = { 'sessionToken': req.param('sessionToken') };
     var returnCurrentUser = function(err, user) {
       if (err) {
         return next(err);
