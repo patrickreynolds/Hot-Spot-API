@@ -1,5 +1,4 @@
 var request = require('request');
-var _ = require('underscore');
 
 module.exports = (function() {
   var BASE_URL = 'https://api.instagram.com/';
