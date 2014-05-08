@@ -3,5 +3,6 @@ module.exports = {
     return res.send('Hello world!');
   },
 
-  user: require('./user')
+  user: require('./user'),
+  hotspots: require('./hotspots')
 };

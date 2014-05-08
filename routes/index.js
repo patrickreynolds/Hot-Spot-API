@@ -38,4 +38,8 @@ module.exports = function(app) {
   app.post('/user/associate',
     loadUserFromSessionToken(),
     controllers.user.associate);
+
+  app.get('/hotspots',
+    loadUserFromSessionToken(),
+    controllers.hotspots);
 };
