@@ -16,10 +16,10 @@ module.exports = (function() {
       url: BASE_URL + VERSION + path,
       json: true
     }, function(error, response, body) {
-      if (response.statusCode !== 200) {
-        return callback(new Error('Instagram API is unavailable (statusCode: ' + response.statusCode + ')'), body);
-      } else if (error) {
+      if (error) {
         return callback(error, body);
+      } else if (response.statusCode !== 200) {
+        return callback(new Error('Instagram API is unavailable (statusCode: ' + response.statusCode + ')'), body);
       } else {
         return callback(null, body);
       }
