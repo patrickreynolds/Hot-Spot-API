@@ -43,6 +43,10 @@ module.exports = function(app) {
     loadUserFromSessionToken(),
     controllers.hotspots);
 
+  app.post('/hotspot',
+    loadUserFromSessionToken(),
+    controllers.hotspot.create);
+
   app.get('/hotspot/:lat/:lng',
     loadUserFromSessionToken(),
     controllers.hotspot.fetch);

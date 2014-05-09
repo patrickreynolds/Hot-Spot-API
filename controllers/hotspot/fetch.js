@@ -5,7 +5,7 @@ module.exports = (function() {
   return function fetch(req, res, next) {
     if (!req.params.lat) {
       return res.json(400, { field: 'lat' });
-    } if (!req.params.lng) {
+    } else if (!req.params.lng) {
       return res.json(400, { field: 'lng' });
     }
     return async.waterfall([
