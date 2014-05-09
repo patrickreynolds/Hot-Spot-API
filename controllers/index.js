@@ -4,5 +4,6 @@ module.exports = {
   },
 
   user: require('./user'),
-  hotspots: require('./hotspots')
+  hotspots: require('./hotspots'),
+  hotspot: require('./hotspot')
 };
