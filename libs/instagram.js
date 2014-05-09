@@ -8,6 +8,14 @@ module.exports = (function() {
     return api_get('/users/self?access_token=' + access_token, callback);
   };
 
+  var hotspot = function(parameters, access_token, callback) {
+    var path = '/media/search?lat=' + parameters.lat +
+      '&lng=' + parameters.lng +
+      '&distance=' + parameters.distance +
+      '&access_token=' + access_token;
+    return api_get(path, callback);
+  };
+
   var api_get = function(path, callback) {
     if (path[0] !== '/') {
       path = '/' + path;
@@ -46,6 +54,7 @@ module.exports = (function() {
   return {
     api_get: api_get,
     api_post: api_post,
-    user: user
+    user: user,
+    hotspot: hotspot
   };
 })();
