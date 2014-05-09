@@ -3,8 +3,6 @@ var User = require('../../models/user.js');
 
 module.exports = (function() {
   return function login(req, res, next) {
-    var currentUser;
-
     return async.waterfall([
       function(callback) {
         if (typeof req.body.email !== 'undefined' || typeof req.body.password !== 'undefined') {
@@ -49,9 +47,8 @@ module.exports = (function() {
             return res.json(404, { error: 'User not found or Wrong userId/sessionToken combination' });
           }
         }
-        currentUser = _user;
-        currentUser.sessionToken = User.randomToken();
-        return currentUser.save(callback);
+        _user.sessionToken = User.randomToken();
+        return _user.save(callback);
       }, function(currentUser, numberAffected, callback) {
         if (!currentUser.instagramSessionToken || currentUser.instagramSessionToken === '') {
           return res.json(403, {
@@ -62,7 +59,7 @@ module.exports = (function() {
         //TODO: Check the instagram sessionToken
         return currentUser.save(callback);
       }
-    ], function(err) {
+    ], function(err, currentUser) {
       if (err) {
         return next(err);
       }

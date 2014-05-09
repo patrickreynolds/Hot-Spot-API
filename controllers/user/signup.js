@@ -45,13 +45,13 @@ module.exports = (function() {
         });
         return newUser.save(callback);
       }
-    ], function(err, user) {
+    ], function(err, newUser) {
       if (err) {
         return next(err);
       }
       return res.json(200, {
-        userId: user._id,
-        sessionToken: user.sessionToken
+        userId: newUser._id,
+        sessionToken: newUser.sessionToken
       });
     });
   };
