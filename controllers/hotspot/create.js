@@ -21,6 +21,7 @@ module.exports = (function() {
         }
         req.currentUser.hotspots.push({
           name: req.body.name,
+          description: req.body.description || '',
           lng: req.body.lat,
           lat: req.body.lng
         });

@@ -23,6 +23,7 @@ var userSchema = new Schema({
   },
   hotspots: [{
     name: String,
+    description: String,
     lng: Number,
     lat: Number
   }]
