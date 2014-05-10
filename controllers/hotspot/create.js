@@ -4,11 +4,20 @@ var _ = require('underscore');
 module.exports = (function() {
   return function create(req, res, next) {
     if (!req.body.name) {
-      return res.json(400, { field: 'name' });
+      return res.json(400, {
+        field: 'name',
+        error: 'Name must be filled'
+      });
     } else if (!req.body.lat) {
-      return res.json(400, { field: 'lat' });
+      return res.json(400, {
+        field: 'lat',
+        error: 'Lat must be filled'
+      });
     } else if (!req.body.lng) {
-      return res.json(400, { field: 'lng' });
+      return res.json(400, {
+        field: 'lng',
+        error: 'Lng must be filled'
+      });
     }
     return async.waterfall([
       function(callback) {
