@@ -41,7 +41,11 @@ module.exports = function(app) {
 
   app.get('/hotspots',
     loadUserFromSessionToken(),
-    controllers.hotspots);
+    controllers.hotspots.list);
+
+  app.get('/hotspots/feed',
+    loadUserFromSessionToken(),
+    controllers.hotspots.feed);
 
   app.post('/hotspot',
     loadUserFromSessionToken(),
