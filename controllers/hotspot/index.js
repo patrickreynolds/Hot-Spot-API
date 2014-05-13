@@ -1,6 +1,7 @@
 module.exports = (function() {
   return {
     create: require('./create'),
-    fetch: require('./fetch')
+    fetch: require('./fetch'),
+    'delete': require('./delete')
   };
 })();

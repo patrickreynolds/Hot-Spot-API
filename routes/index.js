@@ -51,6 +51,10 @@ module.exports = function(app) {
     loadUserFromSessionToken(),
     controllers.hotspot.create);
 
+  app.post('/hotspot/:hotSpotId/delete',
+    loadUserFromSessionToken(),
+    controllers.hotspot.delete);
+
   app.get('/hotspot/:lat/:lng',
     loadUserFromSessionToken(),
     controllers.hotspot.fetch);
