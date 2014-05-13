@@ -1,4 +1,5 @@
 var async = require('async');
+var _ = require('underscore');
 var instagram = require('../../libs/instagram');
 
 module.exports = (function() {
@@ -27,7 +28,7 @@ module.exports = (function() {
         });
       }
       return res.json(200, {
-        mediaList: _instagramHotspot.data
+        mediaList: _.sortBy(_instagramHotspot.data, function(media) { return -media.created_time; })
       });
     });
   };

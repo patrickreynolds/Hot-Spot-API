@@ -36,7 +36,7 @@ module.exports = (function() {
         });
       });
       return res.json(200, {
-        mediaList: mediaList
+        mediaList: _.sortBy(mediaList, function(media) { return -media.created_time; })
       });
     });
   };
